@@ -567,7 +567,7 @@ var payment =
 	  };
 
 	  Payment.restrictNumeric = function(el) {
-	    return QJ.on(el, 'keypress', restrictNumeric);
+	    return QJ.on(el, 'keydown', restrictNumeric);
 	  };
 
 	  Payment.cardExpiryVal = function(el) {
@@ -576,7 +576,7 @@ var payment =
 
 	  Payment.formatCardCVC = function(el) {
 	    Payment.restrictNumeric(el);
-	    QJ.on(el, 'keypress', restrictCVC);
+	    QJ.on(el, 'keydown', restrictCVC);
 	    return el;
 	  };
 
@@ -587,25 +587,25 @@ var payment =
 	      month = el[0], year = el[1];
 	      this.formatCardExpiryMultiple(month, year);
 	    } else {
-	      QJ.on(el, 'keypress', restrictCombinedExpiry);
-	      QJ.on(el, 'keypress', formatExpiry);
-	      QJ.on(el, 'keypress', formatForwardSlash);
-	      QJ.on(el, 'keypress', formatForwardExpiry);
+	      QJ.on(el, 'keydown', restrictCombinedExpiry);
+	      QJ.on(el, 'keydown', formatExpiry);
+	      QJ.on(el, 'keydown', formatForwardSlash);
+	      QJ.on(el, 'keydown', formatForwardExpiry);
 	      QJ.on(el, 'keydown', formatBackExpiry);
 	    }
 	    return el;
 	  };
 
 	  Payment.formatCardExpiryMultiple = function(month, year) {
-	    QJ.on(month, 'keypress', restrictMonthExpiry);
-	    QJ.on(month, 'keypress', formatMonthExpiry);
-	    return QJ.on(year, 'keypress', restrictYearExpiry);
+	    QJ.on(month, 'keydown', restrictMonthExpiry);
+	    QJ.on(month, 'keydown', formatMonthExpiry);
+	    return QJ.on(year, 'keydown', restrictYearExpiry);
 	  };
 
 	  Payment.formatCardNumber = function(el) {
 	    Payment.restrictNumeric(el);
-	    QJ.on(el, 'keypress', restrictCardNumber);
-	    QJ.on(el, 'keypress', formatCardNumber);
+	    QJ.on(el, 'keydown', restrictCardNumber);
+	    QJ.on(el, 'keydown', formatCardNumber);
 	    QJ.on(el, 'keydown', formatBackCardNumber);
 	    QJ.on(el, 'keyup', setCardType);
 	    QJ.on(el, 'paste', reFormatCardNumber);
