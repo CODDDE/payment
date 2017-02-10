@@ -214,11 +214,11 @@ formatExpiry = (e) ->
 
   if /^\d$/.test(val) and val not in ['0', '1']
     e.preventDefault()
-    QJ.val(target, "0#{val} / ")
+    QJ.val(target, "0#{val}/")
 
   else if /^\d\d$/.test(val)
     e.preventDefault()
-    QJ.val(target, "#{val} / ")
+    QJ.val(target, "#{val}/")
 
 formatMonthExpiry = (e) ->
   digit = String.fromCharCode(e.which)
@@ -243,7 +243,7 @@ formatForwardExpiry = (e) ->
   val     = QJ.val(target)
 
   if /^\d\d$/.test(val)
-    QJ.val(target, "#{val} / ")
+    QJ.val(target, "#{val}/")
 
 formatForwardSlash = (e) ->
   slash = String.fromCharCode(e.which)
@@ -253,7 +253,7 @@ formatForwardSlash = (e) ->
   val     = QJ.val(target)
 
   if /^\d$/.test(val) and val isnt '0'
-    QJ.val(target, "0#{val} / ")
+    QJ.val(target, "0#{val}/")
 
 formatBackExpiry = (e) ->
   # If shift+backspace is pressed

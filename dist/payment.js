@@ -97,14 +97,13 @@ var payment =
 	    luhn: true
 	  }, {
 	    type: 'maestro',
-	    pattern: /^(5018|5020|5038|6304|6703|6759|676[1-3])/,
+	    pattern: /^(5018|5020|5038|6304|6703|6708|6759|676[1-3])/,
 	    format: defaultFormat,
 	    length: [12, 13, 14, 15, 16, 17, 18, 19],
 	    cvcLength: [3],
 	    luhn: true
 	  }, {
 	    type: 'mastercard',
-	    pattern: /^5[1-5]/,
 	    pattern: /^(5[1-5]|677189)|^(222[1-9]|2[3-6]\d{2}|27[0-1]\d|2720)/,
 	    format: defaultFormat,
 	    length: [16],
@@ -126,7 +125,7 @@ var payment =
 	    luhn: true
 	  }, {
 	    type: 'elo',
-	    pattern: /^4011|438935|45(1416|76|7393)|50(4175|6699|67|90[4-7])|63(6297|6368)/,
+	    pattern: /^(4011|438935|45(1416|76|7393)|50(4175|6699|67|90[4-7])|63(6297|6368))/,
 	    format: defaultFormat,
 	    length: [16],
 	    cvcLength: [3],
@@ -279,10 +278,10 @@ var payment =
 	  val = QJ.val(target) + digit;
 	  if (/^\d$/.test(val) && (val !== '0' && val !== '1')) {
 	    e.preventDefault();
-	    return QJ.val(target, "0" + val + " / ");
+	    return QJ.val(target, "0" + val + "/");
 	  } else if (/^\d\d$/.test(val)) {
 	    e.preventDefault();
-	    return QJ.val(target, val + " / ");
+	    return QJ.val(target, val + "/");
 	  }
 	};
 
@@ -312,7 +311,7 @@ var payment =
 	  target = e.target;
 	  val = QJ.val(target);
 	  if (/^\d\d$/.test(val)) {
-	    return QJ.val(target, val + " / ");
+	    return QJ.val(target, val + "/");
 	  }
 	};
 
@@ -325,7 +324,7 @@ var payment =
 	  target = e.target;
 	  val = QJ.val(target);
 	  if (/^\d$/.test(val) && val !== '0') {
-	    return QJ.val(target, "0" + val + " / ");
+	    return QJ.val(target, "0" + val + "/");
 	  }
 	};
 
